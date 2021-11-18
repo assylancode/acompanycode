@@ -1,0 +1,20 @@
+version: '3.1'
+services:
+  app:
+    container_name: acodecompany-app
+    image: acodecompany-app
+    build: .
+    ports:
+      - 8080:8080
+    depends_on:
+      - postgres_db
+  postgres_db:
+    container_name: postgresql-db
+    image: "postgres:14"
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_DB=postgresql
+      - POSTGRES_PASSWORD=Aa123456
+      - POSTGRES_USER=postgres
